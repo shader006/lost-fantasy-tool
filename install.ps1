@@ -49,9 +49,9 @@ try {
     Write-Step "Install folder: $Dir"
     New-Item -ItemType Directory -Force -Path $Dir | Out-Null
 
-    $running = Get-Process -Name 'lost_fantasy_user', 'engine' -ErrorAction SilentlyContinue |
+    $running = Get-Process -Name 'lost_fantasy_cli', 'engine' -ErrorAction SilentlyContinue |
         Where-Object { $_.Path -and $_.Path.StartsWith($Dir, [StringComparison]::OrdinalIgnoreCase) }
-    if ($running) { throw "Close Lost Fantasy (lost_fantasy_user.exe / engine.exe) in $Dir before installing." }
+    if ($running) { throw "Close Lost Fantasy (lost_fantasy_cli.exe / engine.exe) in $Dir before installing." }
 
     Write-Step 'Reading latest release manifest'
     $manifest = $wc.DownloadString("$Base/latest/download/manifest.json") | ConvertFrom-Json
@@ -95,18 +95,18 @@ try {
         Set-Content -LiteralPath $settings -Encoding ASCII -Value "{`n  `"headlessMode`": false,`n  `"windowWidth`": 160,`n  `"windowHeight`": 35`n}"
         Write-Ok 'settings.json created'
     }
-    $accounts = Join-Path $Dir 'accounts_user.json'
+    $accounts = Join-Path $Dir 'accounts.json'
     if (-not (Test-Path -LiteralPath $accounts)) {
         Set-Content -LiteralPath $accounts -Encoding ASCII -Value '[]'
-        Write-Ok 'accounts_user.json created'
+        Write-Ok 'accounts.json created'
     }
 
     Write-Host ''
     Write-Host "Installed Lost Fantasy v$($manifest.version) to $Dir" -ForegroundColor Green
-    Write-Host "Run: $Dir\lost_fantasy_user.exe" -ForegroundColor Green
+    Write-Host "Run: $Dir\lost_fantasy_cli.exe" -ForegroundColor Green
     $answer = Read-Host 'Launch now? (Y/n)'
     if ($answer -notmatch '^[nN]') {
-        Start-Process -FilePath (Join-Path $Dir 'lost_fantasy_user.exe') -WorkingDirectory $Dir
+        Start-Process -FilePath (Join-Path $Dir 'lost_fantasy_cli.exe') -WorkingDirectory $Dir
     }
 } catch {
     Write-Host ''
