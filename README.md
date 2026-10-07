@@ -1,18 +1,30 @@
 # Lost Fantasy Tool
 
-## 📥 Tải & cài đặt
+## 📥 Download & install
 
-➡️ **[Bấm vào đây để tải bộ cài đầy đủ (LostFantasy-full.zip)](https://github.com/shader006/lost-fantasy-tool/releases/download/installer/LostFantasy-full.zip)**  (~460 MB)
+➡️ **[Click here to download the full installer (LostFantasy-full.zip)](https://github.com/shader006/lost-fantasy-tool/releases/download/installer/LostFantasy-full.zip)**  (~460 MB)
 
-1. Tải file zip ở trên.
-2. Chuột phải → **Extract All** → chọn nơi cài, ví dụ `C:\LostFantasy`.
-3. Mở thư mục vừa giải nén, chạy **`lost_fantasy_user.exe`**.
-4. Nếu Windows báo *"Windows protected your PC"*: bấm **More info → Run anyway** (chỉ lần đầu).
+1. Download the zip file above.
+2. Right-click → **Extract All** → pick an install folder, e.g. `C:\LostFantasy`.
+3. Open the extracted folder and run **`lost_fantasy_user.exe`**.
+4. If Windows shows *"Windows protected your PC"*: click **More info → Run anyway** (first run only).
 
-## 🔄 Cập nhật
+### Prefer a one-line install script instead?
 
-Sau khi cài, chương trình **tự kiểm tra bản mới**. Khi thấy dòng vàng dưới màn hình: nhấn **U** để tải, nhấn **U** lần nữa để cài. Bạn **không cần tải lại** file zip.
+**PowerShell:**
+```powershell
+irm https://raw.githubusercontent.com/shader006/lost-fantasy-tool/main/install.ps1 | iex
+```
+**Command Prompt (cmd.exe):**
+```cmd
+curl -L -o install.cmd https://raw.githubusercontent.com/shader006/lost-fantasy-tool/main/install.cmd && install.cmd
+```
+Both download every file, verify its SHA256, fetch the Chromium runtime, and ask before launching the app. Safe to re-run anytime to repair an install.
 
-## ❓ Mục Releases có nhiều file khó hiểu?
+## 🔄 Updating
 
-Bạn **chỉ cần tải bộ cài đầy đủ** ở trên. Các file `.exe`, `.dll`, `manifest.json`… là thành phần để chương trình tự cập nhật, không phải để tải tay.
+After installing, the app **checks for updates automatically**. When a yellow line appears at the bottom: press **U** to download, then **U** again to install. You never need to re-download the zip.
+
+## ❓ Lots of confusing files under Releases?
+
+You only need the **full installer** above. The `.exe`, `.dll`, `manifest.json`… files are internal pieces the self-updater uses — not meant to be downloaded by hand.
