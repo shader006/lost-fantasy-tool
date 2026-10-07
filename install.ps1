@@ -78,7 +78,7 @@ try {
     if ($hasChromium) {
         Write-Ok 'Chromium runtime already installed'
     } else {
-        Write-Step 'Downloading Chromium runtime (one time, ~150-200 MB)'
+        Write-Step 'Downloading Chromium runtime (one time, ~370 MB)'
         $shaLine = $wc.DownloadString("$Base/download/$BrowserTag/runtime-browser.zip.sha256").Trim()
         $zipSha = ($shaLine -split '\s+')[0]
         $zip = Join-Path $Dir 'runtime-browser.zip'
