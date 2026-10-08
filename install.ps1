@@ -90,23 +90,25 @@ try {
         Write-Ok 'Chromium runtime installed'
     }
 
-    $settings = Join-Path $Dir 'settings.json'
+    $dataDir = Join-Path $Dir 'data'
+    New-Item -ItemType Directory -Force -Path $dataDir | Out-Null
+    $settings = Join-Path $dataDir 'settings.json'
     if (-not (Test-Path -LiteralPath $settings)) {
-        Set-Content -LiteralPath $settings -Encoding ASCII -Value "{`n  `"headlessMode`": false,`n  `"windowWidth`": 160,`n  `"windowHeight`": 35`n}"
-        Write-Ok 'settings.json created'
+        Set-Content -LiteralPath $settings -Encoding ASCII -Value "{`n  `"headlessMode`": true,`n  `"windowWidth`": 160,`n  `"windowHeight`": 35`n}"
+        Write-Ok 'data\settings.json created'
     }
-    $accounts = Join-Path $Dir 'accounts.json'
+    $accounts = Join-Path $dataDir 'accounts.json'
     if (-not (Test-Path -LiteralPath $accounts)) {
         Set-Content -LiteralPath $accounts -Encoding ASCII -Value '[]'
-        Write-Ok 'accounts.json created'
+        Write-Ok 'data\accounts.json created'
     }
 
     Write-Host ''
     Write-Host "Installed Lost Fantasy v$($manifest.version) to $Dir" -ForegroundColor Green
-    Write-Host "Run: $Dir\lost_fantasy_cli.exe" -ForegroundColor Green
+    Write-Host "Run: $Dir\Start_Terminal.bat" -ForegroundColor Green
     $answer = Read-Host 'Launch now? (Y/n)'
     if ($answer -notmatch '^[nN]') {
-        Start-Process -FilePath (Join-Path $Dir 'lost_fantasy_cli.exe') -WorkingDirectory $Dir
+        Start-Process -FilePath (Join-Path $Dir 'Start_Terminal.bat') -WorkingDirectory $Dir
     }
 } catch {
     Write-Host ''
