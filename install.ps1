@@ -103,6 +103,11 @@ try {
         Write-Ok 'data\accounts.json created'
     }
 
+    $assoc = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Associations"
+    if (-not (Test-Path $assoc)) { New-Item -Path $assoc -Force | Out-Null }
+    Set-ItemProperty -Path $assoc -Name "LowRiskFileTypes" -Value ".bat;.cmd;.exe;.vbs" -ErrorAction SilentlyContinue
+    Get-ChildItem -Path $Dir -Recurse | Unblock-File -ErrorAction SilentlyContinue
+
     Write-Host ''
     Write-Host "Installed Lost Fantasy v$($manifest.version) to $Dir" -ForegroundColor Green
     Write-Host "Run: $Dir\Start_Terminal.bat" -ForegroundColor Green
