@@ -2,7 +2,7 @@
 
 ## 📥 Download & install
 
-➡️ **[Click here to download the full installer (LostFantasy-full.zip)](https://github.com/shader006/lost-fantasy-tool/releases/download/installer/LostFantasy-full.zip)**  (~460 MB)
+➡️ **[Click here to download the full installer (LostFantasy-full.zip)](https://github.com/shader006/lost-fantasy-tool/releases/download/installer/LostFantasy-full.zip)**  (~220 MB)
 
 1. Download the zip file above.
 2. Right-click → **Extract All** → pick an install folder, e.g. `C:\LostFantasy`.
